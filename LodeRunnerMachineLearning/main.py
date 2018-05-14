@@ -14,20 +14,25 @@ def main():
         print('Failed to upload configurations: '+ str(e))
         exit(0)
 
-    # create the experiments dirs
+    print('Creating new directories...',end = '   ')
     create_dirs([config.tensorboard_log_dir, config.checkpoint_dir])
+    print('Done')
 
-    print('Create the data generator.')
+    print('Loading training and test data...',end = '   ')
     data_loader = SimpleMnistDataLoader(config)
+    print('Done')
 
-    print('Create the model.')
+    print('Creating the model...',end = '   ')
     model = SimpleMnistModel(config)
+    print('Done')
 
-    print('Create the trainer')
+    print('Creating the trainer...',end = '   ')
     trainer = SimpleMnistModelTrainer(model.model, data_loader.get_train_data(), config)
+    print('Done')
 
-    print('Start training the model.')
+    print('Training the model...', end = '   ')
     trainer.train()
+    print('Done')
 
 
 if __name__ == '__main__':

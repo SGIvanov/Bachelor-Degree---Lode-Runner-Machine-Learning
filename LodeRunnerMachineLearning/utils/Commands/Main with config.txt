@@ -1,0 +1,1 @@
+Example: python main.py -c configs/simple_mnist_config.json
