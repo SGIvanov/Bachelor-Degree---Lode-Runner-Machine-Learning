@@ -14,23 +14,23 @@ def main():
         print('Failed to upload configurations: '+ str(e))
         exit(0)
 
-    print('Creating new directories...',end = '   ')
+    print('Creating new directories...', end='   ')
     create_dirs([config.tensorboard_log_dir, config.checkpoint_dir])
     print('Done')
 
-    print('Loading training and test data...',end = '   ')
+    print('Loading training and test data...', end='   ')
     data_loader = SimpleMnistDataLoader(config)
     print('Done')
 
-    print('Creating the model...',end = '   ')
+    print('Creating the model...', end='   ')
     model = SimpleMnistModel(config)
     print('Done')
 
-    print('Creating the trainer...',end = '   ')
+    print('Creating the trainer...', end='   ')
     trainer = SimpleMnistModelTrainer(model.model, data_loader.get_train_data(), config)
     print('Done')
 
-    print('Training the model...', end = '   ')
+    print('Training the model...', end='   ')
     trainer.train()
     print('Done')
 
