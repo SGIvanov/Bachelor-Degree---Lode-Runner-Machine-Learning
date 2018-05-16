@@ -1,6 +1,6 @@
-from data_loader.simple_mnist_data_loader import SimpleMnistDataLoader
-from models.simple_mnist_model import SimpleMnistModel
-from trainers.simple_mnist_trainer import SimpleMnistModelTrainer
+from data_loader.lode_runner_data_loader import LodeRunnerDataLoader
+from models.lode_runner_model import LodeRunnerModel
+from trainers.lode_runner_trainer import LodeRunnerTrainer
 from utils.config import process_config
 from utils.dirs import create_dirs
 from utils.utils import get_args
@@ -18,22 +18,19 @@ def main():
     create_dirs([config.tensorboard_log_dir, config.checkpoint_dir])
     print('Done')
 
-    print('Loading training and test data...', end='   ')
-    data_loader = SimpleMnistDataLoader(config)
-    print('Done')
+    data_loader = LodeRunnerDataLoader(config)
 
     print('Creating the model...', end='   ')
-    model = SimpleMnistModel(config)
+    model = LodeRunnerModel(config)
     print('Done')
 
     print('Creating the trainer...', end='   ')
-    trainer = SimpleMnistModelTrainer(model.model, data_loader.get_train_data(), config)
+    trainer = LodeRunnerTrainer(model.model, data_loader.get_train_data(), config)
     print('Done')
 
     print('Training the model...', end='   ')
     trainer.train()
     print('Done')
-
 
 if __name__ == '__main__':
     main()
