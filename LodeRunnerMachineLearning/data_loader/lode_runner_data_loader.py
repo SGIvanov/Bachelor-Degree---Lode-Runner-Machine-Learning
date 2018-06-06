@@ -78,7 +78,7 @@ class LodeRunnerDataLoader(BaseDataLoader):
         # parse each matrix in the list
         x_test, y_test = [], []
         for i in range(0, len(list_of_data_matrix)):
-            print('Transforming level: ' + str(i + 1) + ' out of' + str(len(list_of_data_matrix)) + ' ...', end='   ')
+            print('Transforming level: ' + str(i + 1) + ' out of ' + str(len(list_of_data_matrix)) + ' ...', end='   ')
             # parse the level matrix (On Columns sneak stile)
             k = 0
             sign = True

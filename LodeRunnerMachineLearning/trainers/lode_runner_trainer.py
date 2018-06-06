@@ -42,17 +42,15 @@ class LodeRunnerTrainer(BaseTrain):
             self.callbacks.append(experiment.get_keras_callback())
 
     def train(self):
+        np.set_printoptions(threshold=np.inf)
         x_train = np.array(self.data[0])
-        print(x_train)
-        x_train.reshape(447, 10, 1)
-        print(x_train)
+        x_train = np.reshape(x_train,(44700,1,10))
         y_train = np.array(self.data[1])
-        y_train.reshape(447, 10, 1)
         history = self.model.fit(
             x_train,y_train,
+            batch_size=self.config.batch_size,
             epochs=self.config.num_epochs,
             verbose=self.config.verbose_training,
-            batch_size=447,
             validation_split=self.config.validation_split,
             callbacks=self.callbacks,
         )

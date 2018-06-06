@@ -4,6 +4,8 @@ from trainers.lode_runner_trainer import LodeRunnerTrainer
 from utils.config import process_config
 from utils.dirs import create_dirs
 from utils.utils import get_args
+from keras.models import load_model
+import numpy as np
 
 
 def main():
@@ -34,3 +36,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
