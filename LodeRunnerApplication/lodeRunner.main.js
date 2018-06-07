@@ -323,10 +323,7 @@ function startGame(noCycle)
 	switch(playMode) {
 	case PLAY_CLASSIC:
 		getClassicInfo();	
-		levelMap = levelData[curLevel-1];	
-		if(curLevel >= levelData.length && (passedLevel+1) >= levelData.length) {
-			loadEndingMusic(); //6/15/2015, music prepare for winner
-		}
+		levelMap = levelData[0];	
 		break;
 	case PLAY_MODERN:
 		getModernInfo();	
@@ -345,7 +342,7 @@ function startGame(noCycle)
 		break;	
 	case PLAY_AUTO:
 		getAutoDemoLevel(1);
-		levelMap = levelData[curLevel-1];	
+		levelMap = levelData[0];	
 		break;
 	}
 	showLevel(levelMap);
