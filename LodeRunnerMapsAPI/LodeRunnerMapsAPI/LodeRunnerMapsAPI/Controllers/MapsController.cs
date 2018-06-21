@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace LodeRunnerMapsAPI.Controllers
@@ -11,16 +12,18 @@ namespace LodeRunnerMapsAPI.Controllers
         [HttpGet]
         public IHttpActionResult Level()
         {
-            var result = run_cmd("D:/LastYear/Licenta/LodeRunnerMachineLearning/generate/main.py", "");
+            var result = Run_cmd("D:/LastYear/Licenta/LodeRunnerMachineLearning/generate/main.py", "");
             return Ok(result);
         }
-        private string run_cmd(string cmd, string args)
+        public string Run_cmd(string cmd, string args)
         {
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = "C:/Users/silvi/AppData/Local/conda/conda/envs/LodeRunner/python.exe";
-            start.Arguments = string.Format("{0} {1}", cmd, args);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
+            ProcessStartInfo start = new ProcessStartInfo
+            {
+                FileName = "C:/Users/silvi/AppData/Local/conda/conda/envs/LodeRunner/python.exe",
+                Arguments = string.Format("{0} {1}", cmd, args),
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            };
             using (Process process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
