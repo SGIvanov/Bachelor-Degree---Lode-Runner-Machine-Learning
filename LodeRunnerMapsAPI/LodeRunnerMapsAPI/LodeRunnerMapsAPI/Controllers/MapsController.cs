@@ -1,8 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace LodeRunnerMapsAPI.Controllers
@@ -29,9 +26,14 @@ namespace LodeRunnerMapsAPI.Controllers
                 using (StreamReader reader = process.StandardOutput)
                 {
                     string result = reader.ReadToEnd();
-                    return result;
+                    return "Test";
                 }
             }
         }
     }
 }
+
+
+
+
+
