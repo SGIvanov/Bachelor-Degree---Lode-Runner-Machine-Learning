@@ -1,8 +1,8 @@
-class BaseTrainer(object):
+class BaseTester(object):
     def __init__(self, model, data, config):
         self.model = model
         self.data = data
         self.config = config
 
-    def train(self):
+    def test(self):
         raise NotImplementedError

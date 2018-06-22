@@ -1,5 +1,6 @@
 from data_loader.lode_runner_data_loader import LodeRunnerDataLoader
 from models.lode_runner_model import LodeRunnerModel
+from tester.lode_runner_tester import LodeRunnerTester
 from trainers.lode_runner_trainer import LodeRunnerTrainer
 from utils.config import process_config
 from utils.dirs import create_dirs
@@ -32,6 +33,14 @@ def main():
 
     print('Training the model...', end='   ')
     trainer.train()
+    print('Done')
+
+    print('Creating the tester...', end='   ')
+    tester = LodeRunnerTester(model.model, data_loader.get_test_data(), config)
+    print('Done')
+
+    print('Training the model...', end='   ')
+    tester.test()
     print('Done')
 
 if __name__ == '__main__':
