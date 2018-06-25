@@ -6,7 +6,6 @@ import os
 def main():
     dir_name = os.path.dirname(__file__)
     model_file = os.path.join(dir_name, 'selectedModels/LodeRunner_LSTM-01-1.27.hdf5')
-    np.random.seed(37)
     model = load_model(model_file)
     vector = start_vector(True, 0)
     map = np.chararray((16, 28), unicode=True)
