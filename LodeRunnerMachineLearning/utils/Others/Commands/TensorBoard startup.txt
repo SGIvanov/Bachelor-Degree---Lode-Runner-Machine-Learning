@@ -1,1 +1,1 @@
-Example: tensorboard --logdir=experiments/simple_mnist/logs
+Example: tensorboard --logdir=experiments/logs

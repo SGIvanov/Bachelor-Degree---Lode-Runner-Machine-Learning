@@ -39,7 +39,7 @@ def main():
     tester = LodeRunnerTester(model.model, data_loader.get_test_data(), config)
     print('Done')
 
-    print('Training the model...', end='   ')
+    print('Testing the model...', end='   ')
     tester.test()
     print('Done')
 

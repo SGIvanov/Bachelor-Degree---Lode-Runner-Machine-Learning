@@ -1,5 +1,4 @@
 import numpy as np
-from keras.callbacks import ModelCheckpoint, TensorBoard
 
 from tester.base_tester import BaseTester
 
@@ -8,42 +7,20 @@ class LodeRunnerTester(BaseTester):
     def __init__(self, model, data, config):
         super(LodeRunnerTester, self).__init__(model, data, config)
         self.callbacks = []
-        self.loss = []
-        self.acc = []
-        self.val_loss = []
-        self.val_acc = []
-        self.init_callbacks()
-
-    def init_callbacks(self):
-
-        self.callbacks.append(
-                TensorBoard(
-                    log_dir=self.config.tensorboard_log_dir,
-                    write_graph=self.config.tensorboard_write_graph,
-                )
-            )
-
-        if hasattr(self.config,"comet_api_key"):
-            from comet_ml import Experiment
-            experiment = Experiment(api_key=self.config.comet_api_key, project_name=self.config.exp_name)
-            experiment.disable_mp()
-            experiment.log_multiple_params(self.config)
-            self.callbacks.append(experiment.get_keras_callback())
+        self.loss = 0
+        self.acc = 0
 
     def test(self):
         np.set_printoptions(threshold=np.inf)
-        x_train = np.array(self.data[0])
-        x_train = np.reshape(x_train,(22350,1,10))
-        y_train = np.array(self.data[1])
-        history = self.model.fit(
-            x_train,y_train,
+        x_test = np.array(self.data[0])
+        x_test = np.reshape(x_test,(22350,1,10))
+        y_test = np.array(self.data[1])
+        history = self.model.evaluate(
+            x_test,y_test,
             batch_size=self.config.batch_size,
-            epochs=self.config.num_epochs,
-            verbose=self.config.verbose_training,
-            validation_split=self.config.validation_split,
-            callbacks=self.callbacks,
+            verbose=self.config.verbose_training
         )
-        self.loss.extend(history.history['loss'])
-        self.acc.extend(history.history['acc'])
-        self.val_loss.extend(history.history['val_loss'])
-        self.val_acc.extend(history.history['val_acc'])
+        self.loss = history[0]
+        self.acc = history[1]
+        print("Loss :" + str(self.loss))
+        print("Accuracy: " +str(self.acc))

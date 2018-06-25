@@ -26,7 +26,7 @@ namespace LodeRunnerMapsAPI.Controllers
                 using (StreamReader reader = process.StandardOutput)
                 {
                     string result = reader.ReadToEnd();
-                    return "Test";
+                    return result;
                 }
             }
         }
