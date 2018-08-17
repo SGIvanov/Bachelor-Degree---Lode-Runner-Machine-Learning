@@ -15,8 +15,7 @@ classicData[0] = "                  S         " +
     "    H######         #######H" +
     "    H         &  $ $$      H" +
     "######################@#####";
-//jQuery.ajaxSettings.async = false;
-//$.get("http://localhost:8498/api/Maps/Level", function (data) {
-//   classicData[0] = data;
-//});
-//jQuery.ajaxSettings.async = true;
+
+$.get("http://localhost:8498/api/Maps/Level", function (data) {
+   classicData[1] = data;
+});

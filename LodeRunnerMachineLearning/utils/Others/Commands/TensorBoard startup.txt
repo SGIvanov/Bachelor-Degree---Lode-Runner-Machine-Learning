@@ -1,1 +1,1 @@
-Example: tensorboard --logdir=experiments/logs
+Example: tensorboard --logdir=experiments
