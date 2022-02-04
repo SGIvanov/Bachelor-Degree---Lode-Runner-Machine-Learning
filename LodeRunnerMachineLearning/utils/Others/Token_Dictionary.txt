@@ -1,0 +1,10 @@
+#     | Normal Brick (can be break)
+@     | Solid Brick (cannot be break)
+H     | Ladder 
+-     | Hand-to-hand bar (Line of rope)
+X     | False brick (Player passes trough the brick unless is the end of the level)
+S     | Ladder appears at end of level for the player to arrive at the new level
+$     | Gold chest (Need to get all chests to end the level)
+0     | Guard (Enemy)
+&     | Player	(You)
+      | Empty Space 

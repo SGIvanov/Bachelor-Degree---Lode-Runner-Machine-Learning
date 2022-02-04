@@ -1,0 +1,23 @@
+{
+  "exp_name": "LodeRunner_LSTM",
+  "token_dictionary_name": "Token_Dictionary.txt",
+  "number_of_levels_to_load": 150,
+  "number_of_levels_to_train_on":100,
+  "number_of_levels_to_test_on":50,
+  "level_number_of_lines":16,
+  "level_number_of_columns":28,
+  "level_name_prefix": "LevelOut",
+  "level_file_extension": ".txt",
+  "num_epochs": 50,
+  "learning_rate": 0.001,
+  "optimizer": "adam",
+  "batch_size": 16,
+  "validation_split":0.25,
+  "verbose_training": true,
+  "checkpoint_monitor": "val_loss",
+  "checkpoint_mode": "min",
+  "checkpoint_save_best_only": true,
+  "checkpoint_save_weights_only": true,
+  "checkpoint_verbose": true,
+  "tensorboard_write_graph": true
+}
